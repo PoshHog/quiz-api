@@ -98,7 +98,7 @@ app.delete('/room/:roomCode', async (req, res) => {
 // Show version information
 app.get('/version', (req, res) => {
     res.status(200).send({
-        version: process.env.VERSION || 1
+        version: process.env.VERSION || 2
     });
 });
 
