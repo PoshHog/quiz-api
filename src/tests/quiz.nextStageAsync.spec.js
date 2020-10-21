@@ -74,6 +74,12 @@ describe('quiz.nextStageAsync()', function () {
             await expect(quiz.nextStageAsync('1234')).to.eventually.be.rejectedWith('Not enough players yet');
             expect(saveInstance.notCalled).to.be.true;
         });
+
+        it('should accept request if two or more players', async function () {
+            instanceBefore.players = [ {name: "Player 1"} , {name: "Player 2"} ]; // Two players
+            await expect(quiz.nextStageAsync('1234')).not.to.be.rejectedWith('Not enough players yet');
+            expect(saveInstance.notCalled).to.be.false;
+        });
     });
 
     describe('when showing question', function() {
